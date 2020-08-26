@@ -1,8 +1,8 @@
 package presets
 
 import (
-	"owoify-go/structures/word"
-	"owoify-go/util/mappings"
+	"github.com/deadshot465/owoify-go/structures/word"
+	"github.com/deadshot465/owoify-go/util/mappings"
 	"sync"
 )
 

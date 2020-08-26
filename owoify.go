@@ -1,10 +1,10 @@
 package owoify_go
 
 import (
-	"owoify-go/structures/word"
-	"owoify-go/util"
-	"owoify-go/util/mappings"
-	"owoify-go/util/presets"
+	"github.com/deadshot465/owoify-go/structures/word"
+	"github.com/deadshot465/owoify-go/util"
+	"github.com/deadshot465/owoify-go/util/mappings"
+	"github.com/deadshot465/owoify-go/util/presets"
 	"regexp"
 	"strings"
 	"sync"

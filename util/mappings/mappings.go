@@ -2,7 +2,7 @@ package mappings
 
 import (
 	"math/rand"
-	"owoify-go/structures/word"
+	"github.com/deadshot465/owoify-go/structures/word"
 	"regexp"
 	"strings"
 	"sync"

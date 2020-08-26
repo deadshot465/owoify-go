@@ -1,6 +1,6 @@
 package util
 
-import "owoify-go/structures/word"
+import "github.com/deadshot465/owoify-go/structures/word"
 
 func InterleaveArrays(a []*word.Word, b []*word.Word) []*word.Word {
 	var arr []*word.Word

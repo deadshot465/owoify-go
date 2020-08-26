@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// The basic unit of owoify function.
 type Word struct {
 	word string
 	replacedWords []string
@@ -14,6 +15,7 @@ func New(str string) *Word {
 	return &Word{ str, []string{} }
 }
 
+// Replace all matched items with a string.
 func (word *Word) Replace(searchValue *regexp.Regexp, replaceValue string) *Word {
 	if word.searchValueContainsReplacedWords(searchValue, replaceValue) {
 		return word
@@ -38,6 +40,7 @@ func (word *Word) Replace(searchValue *regexp.Regexp, replaceValue string) *Word
 	return word
 }
 
+// Replace all matched items by repeatedly invoking a function.
 func (word *Word) ReplaceWithFuncSingle(searchValue *regexp.Regexp, f func() string) *Word {
 	replaceValue := f()
 	if word.searchValueContainsReplacedWords(searchValue, replaceValue) {
@@ -64,6 +67,7 @@ func (word *Word) ReplaceWithFuncSingle(searchValue *regexp.Regexp, f func() str
 	return word
 }
 
+// Replace all matched items by repeatedly invoking a function.
 func (word *Word) ReplaceWithFuncMultiple(searchValue *regexp.Regexp, f func(string, string) string) *Word {
 	if !searchValue.MatchString(word.word) {
 		return word

@@ -2,6 +2,7 @@ package util
 
 import "github.com/deadshot465/owoify-go/structures/word"
 
+// Helper function to interleave and combine a sequence of strings and a sequence of spaces.
 func InterleaveArrays(a []*word.Word, b []*word.Word) []*word.Word {
 	var arr []*word.Word
 	observed := a

@@ -1,8 +1,8 @@
 package mappings
 
 import (
-	"math/rand"
 	"github.com/deadshot465/owoify-go/structures/word"
+	"math/rand"
 	"regexp"
 	"strings"
 	"sync"
@@ -161,7 +161,7 @@ func MapEwToUwu(input *word.Word) *word.Word {
 }
 
 func MapHeyToHay(input *word.Word) *word.Word {
-	return input.Replace(HEY_TO_HAY, "$1ay")
+	return input.Replace(HEY_TO_HAY, "${1}ay")
 }
 
 func MapDeadToDed(input *word.Word) *word.Word {
@@ -218,23 +218,23 @@ func MapLlToWw(input *word.Word) *word.Word {
 }
 
 func MapVowelOrRExceptOLToWl(input *word.Word) *word.Word {
-	return input.Replace(VOWEL_OR_R_EXCEPT_O_L_TO_WL_LOWER, "wl").Replace(VOWEL_OR_R_EXCEPT_O_L_TO_WL_UPPER, "W$1")
+	return input.Replace(VOWEL_OR_R_EXCEPT_O_L_TO_WL_LOWER, "wl").Replace(VOWEL_OR_R_EXCEPT_O_L_TO_WL_UPPER, "W${1}")
 }
 
 func MapOldToOwld(input *word.Word) *word.Word {
-	return input.Replace(OLD_TO_OWLD_LOWER, "$1wld").Replace(OLD_TO_OWLD_UPPER, "OWLD")
+	return input.Replace(OLD_TO_OWLD_LOWER, "${1}wld").Replace(OLD_TO_OWLD_UPPER, "OWLD")
 }
 
 func MapOlToOwl(input *word.Word) *word.Word {
-	return input.Replace(OL_TO_OWL_LOWER, "$1wl").Replace(OL_TO_OWL_UPPER, "OWL")
+	return input.Replace(OL_TO_OWL_LOWER, "${1}wl").Replace(OL_TO_OWL_UPPER, "OWL")
 }
 
 func MapLOrROToWo(input *word.Word) *word.Word {
-	return input.Replace(LORR_O_TO_WO_LOWER, "wo").Replace(LORR_O_TO_WO_UPPER, "W$1")
+	return input.Replace(LORR_O_TO_WO_LOWER, "wo").Replace(LORR_O_TO_WO_UPPER, "W${1}")
 }
 
 func MapSpecificConsonantsOToLetterAndWo(input *word.Word) *word.Word {
-	return input.Replace(SPECIFIC_CONSONANTS_O_TO_LETTER_AND_WO_LOWER, "$1wo").ReplaceWithFuncMultiple(SPECIFIC_CONSONANTS_O_TO_LETTER_AND_WO_UPPER, func(str1 string, str2 string) string {
+	return input.Replace(SPECIFIC_CONSONANTS_O_TO_LETTER_AND_WO_LOWER, "${1}wo").ReplaceWithFuncMultiple(SPECIFIC_CONSONANTS_O_TO_LETTER_AND_WO_UPPER, func(str1 string, str2 string) string {
 		msg := str1
 		if strings.ToUpper(str2) == str2 {
 			msg += "W"
@@ -252,7 +252,7 @@ func MapVOrWLeToWal(input *word.Word) *word.Word {
 }
 
 func MapFiToFwi(input *word.Word) *word.Word {
-	return input.Replace(FI_TO_FWI_LOWER, "$1wi").Replace(FI_TO_FWI_UPPER, "FWI")
+	return input.Replace(FI_TO_FWI_LOWER, "${1}wi").Replace(FI_TO_FWI_UPPER, "FWI")
 }
 
 func MapVerToWer(input *word.Word) *word.Word {
@@ -260,15 +260,15 @@ func MapVerToWer(input *word.Word) *word.Word {
 }
 
 func MapPoiToPwoi(input *word.Word) *word.Word {
-	return input.Replace(POI_TO_PWOI, "$1woi")
+	return input.Replace(POI_TO_PWOI, "${1}woi")
 }
 
 func MapSpecificConsonantsLeToLetterAndWal(input *word.Word) *word.Word {
-	return input.Replace(SPECIFIC_CONSONANTS_LE_TO_LETTER_AND_WAL, "$1wal")
+	return input.Replace(SPECIFIC_CONSONANTS_LE_TO_LETTER_AND_WAL, "${1}wal")
 }
 
 func MapConsonantsRToConsonantW(input *word.Word) *word.Word {
-	return input.Replace(CONSONANT_R_TO_CONSONANT_W, "$1w")
+	return input.Replace(CONSONANT_R_TO_CONSONANT_W, "${1}w")
 }
 
 func MapLyToWy(input *word.Word) *word.Word {
@@ -276,7 +276,7 @@ func MapLyToWy(input *word.Word) *word.Word {
 }
 
 func MapPleToPwe(input *word.Word) *word.Word {
-	return input.Replace(PLE_TO_PWE, "$1we")
+	return input.Replace(PLE_TO_PWE, "${1}we")
 }
 
 func MapNrToNw(input *word.Word) *word.Word {
@@ -284,19 +284,19 @@ func MapNrToNw(input *word.Word) *word.Word {
 }
 
 func MapFucToFwuc(input *word.Word) *word.Word {
-	return input.Replace(FUC_TO_FWUC, "$1wuc")
+	return input.Replace(FUC_TO_FWUC, "${1}wuc")
 }
 
 func MapMomToMwom(input *word.Word) *word.Word {
-	return input.Replace(MOM_TO_MWOM, "$1wom")
+	return input.Replace(MOM_TO_MWOM, "${1}wom")
 }
 
 func MapMeToMwe(input *word.Word) *word.Word {
-	return input.Replace(ME_TO_MWE, "$1we")
+	return input.Replace(ME_TO_MWE, "${1}we")
 }
 
 func MapNVowelToNy(input *word.Word) *word.Word {
-	return input.Replace(N_VOWEL_TO_NY_FIRST, "ny$1").Replace(N_VOWEL_TO_NY_SECOND, "Ny$1").Replace(N_VOWEL_TO_NY_THIRD, "NY$1")
+	return input.Replace(N_VOWEL_TO_NY_FIRST, "ny${1}").Replace(N_VOWEL_TO_NY_SECOND, "Ny${1}").Replace(N_VOWEL_TO_NY_THIRD, "NY${1}")
 }
 
 func MapOveToUv(input *word.Word) *word.Word {
@@ -308,7 +308,7 @@ func MapHahaToHeheXd(input *word.Word) *word.Word {
 }
 
 func MapTheToTeh(input *word.Word) *word.Word {
-	return input.Replace(THE_TO_TEH, "$1eh")
+	return input.Replace(THE_TO_TEH, "${1}eh")
 }
 
 func MapYouToU(input *word.Word) *word.Word {
@@ -316,13 +316,13 @@ func MapYouToU(input *word.Word) *word.Word {
 }
 
 func MapTimeToTim(input *word.Word) *word.Word {
-	return input.Replace(TIME_TO_TIM, "$1im")
+	return input.Replace(TIME_TO_TIM, "${1}im")
 }
 
 func MapOverToOwor(input *word.Word) *word.Word {
-	return input.Replace(OVER_TO_OWOR, "$1wor")
+	return input.Replace(OVER_TO_OWOR, "${1}wor")
 }
 
 func MapWorseToWose(input *word.Word) *word.Word {
-	return input.Replace(WORSE_TO_WOSE, "$1ose")
+	return input.Replace(WORSE_TO_WOSE, "${1}ose")
 }

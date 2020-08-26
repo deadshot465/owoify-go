@@ -36,7 +36,7 @@ func Initialize() {
 		OWO_WORD_MAPPING_LIST = []func(*word.Word) *word.Word {
 			mappings.MapLlToWw, mappings.MapVowelOrRExceptOLToWl, mappings.MapOldToOwld,
 			mappings.MapOlToOwl, mappings.MapLOrROToWo, mappings.MapSpecificConsonantsOToLetterAndWo,
-			mappings.MapVOrWLeToWal, mappings.MapFiToFwi, mappings.MapPoiToPwoi,
+			mappings.MapVOrWLeToWal, mappings.MapFiToFwi, mappings.MapVerToWer, mappings.MapPoiToPwoi,
 			mappings.MapSpecificConsonantsLeToLetterAndWal, mappings.MapConsonantsRToConsonantW,
 			mappings.MapLyToWy, mappings.MapPleToPwe, mappings.MapNrToNw,
 		}

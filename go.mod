@@ -1,0 +1,1 @@
+module "owoify-go"

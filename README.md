@@ -1,7 +1,7 @@
 # owoify-go
 Turning your worst nightmare into a Go module.
 
-- [Go module](https://github.com/deadshot465/owoify-go)
+- [Go module](https://pkg.go.dev/github.com/deadshot465/owoify-go)
 
 This is a Go port of [mohan-cao's owoify-js](https://github.com/mohan-cao/owoify-js), which will help you turn any string into nonsensical babyspeak similar to LeafySweet's infamous Chrome extension.
 
@@ -16,7 +16,7 @@ Please refer to the original [owoify-js repository](https://github.com/mohan-cao
 Seriously, if you have seen my other ports, you probably have already known the details.
 
 ## Reason for development
-Because [Golang index](https://index.golang.org/index) doesn't have any owoify package. And since I have already ported it to several languages, I might as well just keep porting it.
+Because [pkg.go.dev](https://pkg.go.dev/) doesn't have any owoify package. And since I have already ported it to several languages, I might as well just keep porting it.
 
 ## Install instructions
 On command line, simply run:

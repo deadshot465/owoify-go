@@ -1,3 +1,12 @@
+// Package owoify-go is a Go port of mohan-cao's owoify-js library (https://github.com/mohan-cao/owoify-js).
+//
+// Example and README can be found on owoify-go's GitHub repo: https://github.com/deadshot465/owoify-go
+//
+// Basically, you would and should only call owoify-go's Owoify function, and pass in the source string to be owoified and the desired owoness.
+//
+//		owoify_go.Owoify("Hello, World!", "uvu")
+//
+// The returned string will be the owoified source string.
 package owoify_go
 
 import (

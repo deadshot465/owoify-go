@@ -1,4 +1,4 @@
-// Package owoify-go is a Go port of mohan-cao's owoify-js library (https://github.com/mohan-cao/owoify-js).
+// Package owoify_go is a Go port of mohan-cao's owoify-js library (https://github.com/mohan-cao/owoify-js).
 //
 // Example and README can be found on owoify-go's GitHub repo: https://github.com/deadshot465/owoify-go
 //
@@ -34,7 +34,7 @@ func initialize() {
 	})
 }
 
-// The main entry point of Owoify.
+// Owoify is the main entry point of Owoify.
 func Owoify(source string, level string) string {
 	_level := strings.TrimSpace(strings.ToLower(level))
 	initialize()
@@ -75,6 +75,8 @@ func Owoify(source string, level string) string {
 			for _, v := range presets.OWO_WORD_MAPPING_LIST {
 				w = v(w)
 			}
+		default:
+			panic("The provided owoness level is not correct.")
 		}
 	}
 

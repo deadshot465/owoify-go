@@ -1,8 +1,14 @@
 package owoify_go
 
-import "testing"
+import (
+	"io/ioutil"
+	"strings"
+	"testing"
+)
 
 const source = "This is the string to owo! Kinda cute, isn't it?"
+const pokemonNameListPath = "assets/pokemons.txt"
+const warAndPeacePath = "assets/war_and_peace_chapter01-20.txt"
 
 func TestOwo(t *testing.T) {
 	if got := Owoify(source, "owo"); len(got) == 0 {
@@ -53,5 +59,41 @@ func TestOwoNotEqualToUvu(t *testing.T) {
 func TestUwuNotEqualToUvu(t *testing.T) {
 	if got := Owoify(source, "uwu"); got == Owoify(source, "uvu") {
 		t.Error("A string with level of uwu should not be equal to a string with level of uvu.")
+	}
+}
+
+func TestPokemonNames(t *testing.T) {
+	pokemonNamesBytes, _ := ioutil.ReadFile(pokemonNameListPath)
+	pokemonNames := strings.Split(string(pokemonNamesBytes), "\n")
+	for _, name := range pokemonNames {
+		nameWithOwo := Owoify(name, "owo")
+		nameWithUwu := Owoify(name, "uwu")
+		nameWithUvu := Owoify(name, "uvu")
+		if len(nameWithOwo) == 0 {
+			t.Error("Pokemon name didn't get owoified correctly.")
+		}
+		if len(nameWithUwu) == 0 {
+			t.Error("Pokemon name didn't get owoified correctly.")
+		}
+		if len(nameWithUvu) == 0 {
+			t.Error("Pokemon name didn't get owoified correctly.")
+		}
+	}
+}
+
+func TestLongText(t *testing.T) {
+	longTextBytes, _ := ioutil.ReadFile(warAndPeacePath)
+	text := string(longTextBytes)
+	textWithOwo := Owoify(text, "owo")
+	textWithUwu := Owoify(text, "uwu")
+	textWithUvu := Owoify(text, "uvu")
+	if len(textWithOwo) == 0 {
+		t.Error("Long text didn't get owoified correctly.")
+	}
+	if len(textWithUwu) == 0 {
+		t.Error("Long text didn't get owoified correctly.")
+	}
+	if len(textWithUvu) == 0 {
+		t.Error("Long text didn't get owoified correctly.")
 	}
 }

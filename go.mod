@@ -1,3 +1,3 @@
 module github.com/deadshot465/owoify-go
 
-go 1.15
+go 1.18

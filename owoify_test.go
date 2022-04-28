@@ -11,25 +11,25 @@ const pokemonNameListPath = "assets/pokemons.txt"
 const warAndPeacePath = "assets/war_and_peace_chapter01-20.txt"
 
 func TestOwo(t *testing.T) {
-	if got := Owoify(source, "owo"); len(got) == 0 {
+	if got := Owoify(source, Owo); len(got) == 0 {
 		t.Error("Failed to owoify the string with level of OwO.")
 	}
 }
 
 func TestUwu(t *testing.T) {
-	if got := Owoify(source, "uwu"); len(got) == 0 {
+	if got := Owoify(source, Uwu); len(got) == 0 {
 		t.Error("Failed to owoify the string with level of UwU.")
 	}
 }
 
 func TestUvu(t *testing.T) {
-	if got := Owoify(source, "uvu"); len(got) == 0 {
+	if got := Owoify(source, Uvu); len(got) == 0 {
 		t.Error("Failed to owoify the string with level of UvU.")
 	}
 }
 
 func TestOwoify(t *testing.T) {
-	if got := Owoify(source, "owo"); got == source {
+	if got := Owoify(source, Owo); got == source {
 		t.Error("Failed to owoify the string with level of UwU.")
 	}
 }
@@ -41,23 +41,23 @@ func TestInvalidOwoness(t *testing.T) {
 		}
 	}()
 
-	Owoify(source, "123")
+	Owoify(source, 123)
 }
 
 func TestOwoNotEqualToUwu(t *testing.T) {
-	if got := Owoify(source, "owo"); got == Owoify(source, "uwu") {
+	if got := Owoify(source, Owo); got == Owoify(source, Uwu) {
 		t.Error("A string with level of owo should not be equal to a string with level of uwu.")
 	}
 }
 
 func TestOwoNotEqualToUvu(t *testing.T) {
-	if got := Owoify(source, "owo"); got == Owoify(source, "uvu") {
+	if got := Owoify(source, Owo); got == Owoify(source, Uvu) {
 		t.Error("A string with level of owo should not be equal to a string with level of uvu.")
 	}
 }
 
 func TestUwuNotEqualToUvu(t *testing.T) {
-	if got := Owoify(source, "uwu"); got == Owoify(source, "uvu") {
+	if got := Owoify(source, Uwu); got == Owoify(source, Uvu) {
 		t.Error("A string with level of uwu should not be equal to a string with level of uvu.")
 	}
 }
@@ -66,9 +66,9 @@ func TestPokemonNames(t *testing.T) {
 	pokemonNamesBytes, _ := ioutil.ReadFile(pokemonNameListPath)
 	pokemonNames := strings.Split(string(pokemonNamesBytes), "\n")
 	for _, name := range pokemonNames {
-		nameWithOwo := Owoify(name, "owo")
-		nameWithUwu := Owoify(name, "uwu")
-		nameWithUvu := Owoify(name, "uvu")
+		nameWithOwo := Owoify(name, Owo)
+		nameWithUwu := Owoify(name, Uwu)
+		nameWithUvu := Owoify(name, Uvu)
 		if len(nameWithOwo) == 0 {
 			t.Error("Pokemon name didn't get owoified correctly.")
 		}
@@ -84,9 +84,9 @@ func TestPokemonNames(t *testing.T) {
 func TestLongText(t *testing.T) {
 	longTextBytes, _ := ioutil.ReadFile(warAndPeacePath)
 	text := string(longTextBytes)
-	textWithOwo := Owoify(text, "owo")
-	textWithUwu := Owoify(text, "uwu")
-	textWithUvu := Owoify(text, "uvu")
+	textWithOwo := Owoify(text, Owo)
+	textWithUwu := Owoify(text, Uwu)
+	textWithUvu := Owoify(text, Uvu)
 	if len(textWithOwo) == 0 {
 		t.Error("Long text didn't get owoified correctly.")
 	}

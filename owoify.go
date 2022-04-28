@@ -20,9 +20,17 @@ import (
 )
 
 var (
-	wordRegex *regexp.Regexp
+	wordRegex  *regexp.Regexp
 	spaceRegex *regexp.Regexp
-	once sync.Once
+	once       sync.Once
+)
+
+type Owoness int
+
+const (
+	Owo Owoness = iota
+	Uwu
+	Uvu
 )
 
 func initialize() {
@@ -34,9 +42,9 @@ func initialize() {
 	})
 }
 
-// Owoify is the main entry point of Owoify.
-func Owoify(source string, level string) string {
-	_level := strings.TrimSpace(strings.ToLower(level))
+// Owoify is the main entry point of Owoify. Available owoness levels are (from lowest to highest): Owo, Uwu, Uvu.
+// Panics when passing an invalid owoness level.
+func Owoify(source string, level Owoness) string {
 	initialize()
 	wordMatches := wordRegex.FindAllStringSubmatch(source, -1)
 	spaceMatches := spaceRegex.FindAllStringSubmatch(source, -1)
@@ -53,19 +61,19 @@ func Owoify(source string, level string) string {
 		for _, v := range presets.SPECIFIC_WORD_MAPPING_LIST {
 			w = v(w)
 		}
-		switch _level {
-		case "owo":
+		switch level {
+		case Owo:
 			for _, v := range presets.OWO_WORD_MAPPING_LIST {
 				w = v(w)
 			}
-		case "uwu":
+		case Uwu:
 			for _, v := range presets.UWU_WORD_MAPPING_LIST {
 				w = v(w)
 			}
 			for _, v := range presets.OWO_WORD_MAPPING_LIST {
 				w = v(w)
 			}
-		case "uvu":
+		case Uvu:
 			for _, v := range presets.UVU_WORD_MAPPING_LIST {
 				w = v(w)
 			}
@@ -80,7 +88,7 @@ func Owoify(source string, level string) string {
 		}
 	}
 
-	result := util.InterleaveArrays(words, spaces)
+	result := util.InterleaveSlices(words, spaces)
 	var resultStrings []string
 	for _, v := range result {
 		resultStrings = append(resultStrings, v.ToString())

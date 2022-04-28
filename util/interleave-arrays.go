@@ -1,14 +1,12 @@
 package util
 
-import "github.com/deadshot465/owoify-go/structures/word"
-
-// Helper function to interleave and combine a sequence of strings and a sequence of spaces.
-func InterleaveArrays(a []*word.Word, b []*word.Word) []*word.Word {
-	var arr []*word.Word
+// InterleaveSlices helper function will interleave and combine two sequences.
+func InterleaveSlices[T any](a []T, b []T) []T {
+	var arr []T
 	observed := a
 	other := b
-	var temp []*word.Word
-	
+	var temp []T
+
 	for len(observed) > 0 {
 		arr = append(arr, observed[0])
 		observed = append(observed[:0], observed[1:]...)

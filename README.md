@@ -3,7 +3,7 @@ Turning your worst nightmare into a Go module.
 
 [![Go](https://github.com/deadshot465/owoify-go/actions/workflows/go.yml/badge.svg)](https://github.com/deadshot465/owoify-go/actions/workflows/go.yml)
 
-- [Go module](https://pkg.go.dev/github.com/deadshot465/owoify-go)
+- [Go module](https://pkg.go.dev/github.com/deadshot465/owoify-go/v2)
 
 This is a Go port of [mohan-cao's owoify-js](https://github.com/mohan-cao/owoify-js), which will help you turn any string into nonsensical babyspeak similar to LeafySweet's infamous Chrome extension.
 

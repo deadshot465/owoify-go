@@ -10,10 +10,10 @@
 package owoify_go
 
 import (
-	"github.com/deadshot465/owoify-go/structures/word"
-	"github.com/deadshot465/owoify-go/util"
-	"github.com/deadshot465/owoify-go/util/mappings"
-	"github.com/deadshot465/owoify-go/util/presets"
+	"github.com/deadshot465/owoify-go/v2/structures/word"
+	"github.com/deadshot465/owoify-go/v2/util"
+	"github.com/deadshot465/owoify-go/v2/util/mappings"
+	"github.com/deadshot465/owoify-go/v2/util/presets"
 	"regexp"
 	"strings"
 	"sync"
@@ -58,29 +58,29 @@ func Owoify(source string, level Owoness) string {
 	}
 
 	for _, w := range words {
-		for _, v := range presets.SPECIFIC_WORD_MAPPING_LIST {
+		for _, v := range presets.SpecificWordMappingList {
 			w = v(w)
 		}
 		switch level {
 		case Owo:
-			for _, v := range presets.OWO_WORD_MAPPING_LIST {
+			for _, v := range presets.OwoWordMappingList {
 				w = v(w)
 			}
 		case Uwu:
-			for _, v := range presets.UWU_WORD_MAPPING_LIST {
+			for _, v := range presets.UwuWordMappingList {
 				w = v(w)
 			}
-			for _, v := range presets.OWO_WORD_MAPPING_LIST {
+			for _, v := range presets.OwoWordMappingList {
 				w = v(w)
 			}
 		case Uvu:
-			for _, v := range presets.UVU_WORD_MAPPING_LIST {
+			for _, v := range presets.UvuWordMappingList {
 				w = v(w)
 			}
-			for _, v := range presets.UWU_WORD_MAPPING_LIST {
+			for _, v := range presets.UwuWordMappingList {
 				w = v(w)
 			}
-			for _, v := range presets.OWO_WORD_MAPPING_LIST {
+			for _, v := range presets.OwoWordMappingList {
 				w = v(w)
 			}
 		default:

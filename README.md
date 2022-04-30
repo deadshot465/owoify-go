@@ -37,8 +37,8 @@ import (
 )
 
 func main() {
-	fmt.Println(owoify_go.Owoify("This is the string to owo! Kinda cute, isn't it?", "owo"))
-	fmt.Println(owoify_go.Owoify("This is the string to owo! Kinda cute, isn't it?", "uvu"))
+	fmt.Println(owoify_go.Owoify("This is the string to owo! Kinda cute, isn't it?", Owo))
+	fmt.Println(owoify_go.Owoify("This is the string to owo! Kinda cute, isn't it?", Uvu))
 }
 
 // Output:

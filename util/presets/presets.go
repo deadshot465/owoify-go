@@ -18,9 +18,12 @@ func Initialize() {
 	once.Do(func() {
 		SpecificWordMappingList = []func(*word.Word) *word.Word{
 			mappings.MapFucToFwuc, mappings.MapMomToMwom, mappings.MapTimeToTim,
-			mappings.MapMeToMwe, mappings.MapNVowelToNy, mappings.MapOverToOwor,
+			mappings.MapMeToMwe, mappings.MapOverToOwor,
 			mappings.MapOveToUv, mappings.MapHahaToHeheXd, mappings.MapTheToTeh,
-			mappings.MapYouToU, mappings.MapReadToWead, mappings.MapWorseToWose}
+			mappings.MapYouToU, mappings.MapReadToWead, mappings.MapWorseToWose,
+			mappings.MapGreatToGwate, mappings.MapAviatToAwiat, mappings.MapDedicatToDeditat,
+			mappings.MapRememberToRember, mappings.MapWhenToWen, mappings.MapFrightenedToFrigten,
+			mappings.MapMemeToMem, mappings.MapFeelToFell}
 
 		UvuWordMappingList = []func(*word.Word) *word.Word{
 			mappings.MapOToOwO, mappings.MapEwToUwu, mappings.MapHeyToHay,
@@ -34,11 +37,12 @@ func Initialize() {
 		}
 
 		OwoWordMappingList = []func(*word.Word) *word.Word{
+			mappings.MapNVowelToNy,
 			mappings.MapLlToWw, mappings.MapVowelOrRExceptOLToWl, mappings.MapOldToOwld,
 			mappings.MapOlToOwl, mappings.MapLOrROToWo, mappings.MapSpecificConsonantsOToLetterAndWo,
 			mappings.MapVOrWLeToWal, mappings.MapFiToFwi, mappings.MapVerToWer, mappings.MapPoiToPwoi,
 			mappings.MapSpecificConsonantsLeToLetterAndWal, mappings.MapConsonantsRToConsonantW,
-			mappings.MapLyToWy, mappings.MapPleToPwe, mappings.MapNrToNw,
-		}
+			mappings.MapLyToWy, mappings.MapPleToPwe, mappings.MapNrToNw, mappings.MapMemToMwem,
+			mappings.UnmapNywoToNyo}
 	})
 }

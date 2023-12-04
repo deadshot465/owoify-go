@@ -55,9 +55,13 @@ var (
 	PleToPwe                                        *regexp.Regexp
 	NrToNwUpper                                     *regexp.Regexp
 	NrToNwLower                                     *regexp.Regexp
+	MemToMwemUpper                                  *regexp.Regexp
+	MemToMwemLower                                  *regexp.Regexp
+	NywoToNyo                                       *regexp.Regexp
 	FucToFwuc                                       *regexp.Regexp
 	MomToMwom                                       *regexp.Regexp
-	MeToMwe                                         *regexp.Regexp
+	MeToMweUpper                                    *regexp.Regexp
+	MeToMweLower                                    *regexp.Regexp
 	NVowelToNyFirst                                 *regexp.Regexp
 	NVowelToNySecond                                *regexp.Regexp
 	NVowelToNyThird                                 *regexp.Regexp
@@ -70,6 +74,15 @@ var (
 	TimeToTim                                       *regexp.Regexp
 	OverToOwor                                      *regexp.Regexp
 	WorseToWose                                     *regexp.Regexp
+	GreatToGwate                                    *regexp.Regexp
+	AviatToAwiat                                    *regexp.Regexp
+	DedicatToDeditat                                *regexp.Regexp
+	RememberToRember                                *regexp.Regexp
+	WhenToWen                                       *regexp.Regexp
+	FrightenedToFrigten                             *regexp.Regexp
+	MemeToMemFirst                                  *regexp.Regexp
+	MemeToMemSecond                                 *regexp.Regexp
+	FeelToFell                                      *regexp.Regexp
 	FACES                                           []string
 	once                                            sync.Once
 )
@@ -123,10 +136,14 @@ func Initialize() {
 		LyToWyLower = regexp.MustCompile("ly")
 		PleToPwe = regexp.MustCompile("([Pp])le")
 		NrToNwUpper = regexp.MustCompile("NR")
-		NrToNwLower = regexp.MustCompile("nr")
+		NrToNwLower = regexp.MustCompile("([Nn])r")
+		MemToMwemUpper = regexp.MustCompile("Mem")
+		MemToMwemLower = regexp.MustCompile("mem")
+		NywoToNyo = regexp.MustCompile("([Nn])ywo")
 		FucToFwuc = regexp.MustCompile("([Ff])uc")
 		MomToMwom = regexp.MustCompile("([Mm])om")
-		MeToMwe = regexp.MustCompile("([Mm])e")
+		MeToMweUpper = regexp.MustCompile("^Me$")
+		MeToMweLower = regexp.MustCompile("^me$")
 		NVowelToNyFirst = regexp.MustCompile("n([aeiou])")
 		NVowelToNySecond = regexp.MustCompile("N([aeiou])")
 		NVowelToNyThird = regexp.MustCompile("N([AEIOU])")
@@ -139,6 +156,15 @@ func Initialize() {
 		TimeToTim = regexp.MustCompile("\\b([Tt])ime\\b")
 		OverToOwor = regexp.MustCompile("([Oo])ver")
 		WorseToWose = regexp.MustCompile("([Ww])orse")
+		GreatToGwate = regexp.MustCompile("([Gg])reat")
+		AviatToAwiat = regexp.MustCompile("([Aa])viat")
+		DedicatToDeditat = regexp.MustCompile("([Dd])edicat")
+		RememberToRember = regexp.MustCompile("([Rr])emember")
+		WhenToWen = regexp.MustCompile("([Ww])hen")
+		FrightenedToFrigten = regexp.MustCompile("([Ff])righten(ed)*")
+		MemeToMemFirst = regexp.MustCompile("Meme")
+		MemeToMemSecond = regexp.MustCompile("Mem")
+		FeelToFell = regexp.MustCompile("^([Ff])eel$")
 		FACES = []string{"(・`ω´・)", ";;w;;", "owo", "UwU", ">w<", "^w^", "(* ^ ω ^)", "(⌒ω⌒)", "ヽ(*・ω・)ﾉ", "(o´∀`o)", "(o･ω･o)", "＼(＾▽＾)／", "(*^ω^)", "(◕‿◕✿)", "(◕ᴥ◕)", "ʕ•ᴥ•ʔ", "ʕ￫ᴥ￩ʔ", "(*^.^*)", "(｡♥‿♥｡)", "OwO", "uwu", "uvu", "UvU", "(*￣з￣)", "(つ✧ω✧)つ", "(/ =ω=)/", "(╯°□°）╯︵ ┻━┻", "┬─┬ ノ( ゜-゜ノ)", "¯\\_(ツ)_/¯"}
 	})
 }
@@ -278,7 +304,15 @@ func MapPleToPwe(input *word.Word) *word.Word {
 }
 
 func MapNrToNw(input *word.Word) *word.Word {
-	return input.Replace(NrToNwLower, "nw").Replace(NrToNwUpper, "NW")
+	return input.Replace(NrToNwLower, "${1}w").Replace(NrToNwUpper, "NW")
+}
+
+func MapMemToMwem(input *word.Word) *word.Word {
+	return input.Replace(MemToMwemUpper, "mwem").Replace(MemToMwemLower, "Mwem")
+}
+
+func UnmapNywoToNyo(input *word.Word) *word.Word {
+	return input.Replace(NywoToNyo, "${1}yo")
 }
 
 func MapFucToFwuc(input *word.Word) *word.Word {
@@ -290,7 +324,7 @@ func MapMomToMwom(input *word.Word) *word.Word {
 }
 
 func MapMeToMwe(input *word.Word) *word.Word {
-	return input.Replace(MeToMwe, "${1}we")
+	return input.Replace(MeToMweUpper, "Mwe").Replace(MeToMweLower, "mwe")
 }
 
 func MapNVowelToNy(input *word.Word) *word.Word {
@@ -323,4 +357,36 @@ func MapOverToOwor(input *word.Word) *word.Word {
 
 func MapWorseToWose(input *word.Word) *word.Word {
 	return input.Replace(WorseToWose, "${1}ose")
+}
+
+func MapGreatToGwate(input *word.Word) *word.Word {
+	return input.Replace(GreatToGwate, "${1}wate")
+}
+
+func MapAviatToAwiat(input *word.Word) *word.Word {
+	return input.Replace(AviatToAwiat, "${1}wiat")
+}
+
+func MapDedicatToDeditat(input *word.Word) *word.Word {
+	return input.Replace(DedicatToDeditat, "${1}editat")
+}
+
+func MapRememberToRember(input *word.Word) *word.Word {
+	return input.Replace(RememberToRember, "${1}ember")
+}
+
+func MapWhenToWen(input *word.Word) *word.Word {
+	return input.Replace(WhenToWen, "${1}en")
+}
+
+func MapFrightenedToFrigten(input *word.Word) *word.Word {
+	return input.Replace(FrightenedToFrigten, "${1}rigten")
+}
+
+func MapMemeToMem(input *word.Word) *word.Word {
+	return input.Replace(MemeToMemFirst, "mem").Replace(MemeToMemSecond, "Mem")
+}
+
+func MapFeelToFell(input *word.Word) *word.Word {
+	return input.Replace(FeelToFell, "${1}ell")
 }

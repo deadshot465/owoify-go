@@ -95,3 +95,13 @@ func Owoify(source string, level Owoness) string {
 	}
 	return strings.Join(resultStrings, "")
 }
+
+// Uwuify owoifies the given source string using Uwu owoness level.
+func Uwuify(source string) string {
+	return Owoify(source, Uwu)
+}
+
+// Uvuify owoifies the given source string using Uvu owoness level.
+func Uvuify(source string) string {
+	return Owoify(source, Uvu)
+}
